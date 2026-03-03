@@ -1,0 +1,50 @@
+{
+  "datasets": {
+    "path": "datasets/rag_qa_small.jsonl",
+    "sample_size": 3
+  },
+  "candidates": [
+    {
+      "name": "baseline-lite",
+      "provider": "mock",
+      "model": "mock-lite",
+      "prompt_template": "Answer with one sentence and include citation [1]. Question: {question}",
+      "retriever_top_k": 1,
+      "chunking_strategy": "fixed",
+      "params": {"seed": 42, "style": "brief"}
+    },
+    {
+      "name": "candidate-detailed",
+      "provider": "mock",
+      "model": "mock-pro",
+      "prompt_template": "Answer accurately with citation [1]. Question: {question}",
+      "retriever_top_k": 2,
+      "chunking_strategy": "fixed",
+      "params": {"seed": 42, "style": "detailed"}
+    }
+  ],
+  "metrics": {
+    "enabled": ["quality", "groundedness", "citation", "latency", "cost"]
+  },
+  "policy": {
+    "min_quality": 0.05,
+    "max_latency_ms": 900,
+    "max_cost_per_query": 0.01,
+    "max_quality_drop": 0.05,
+    "weights": {
+      "quality": 0.45,
+      "groundedness": 0.25,
+      "citation": 0.15,
+      "latency": 0.10,
+      "cost": 0.05
+    }
+  },
+  "ci": {
+    "mode": "fail",
+    "post_pr_comment": true
+  },
+  "pricing": {
+    "mock-lite": {"input_per_1k": 0.001, "output_per_1k": 0.002},
+    "mock-pro": {"input_per_1k": 0.002, "output_per_1k": 0.004}
+  }
+}
