@@ -1,6 +1,9 @@
 name: "rag-optimize-ci"
 description: "Evaluate RAG candidates by quality, groundedness, citation, latency, and cost"
 author: "Harmeet Singh"
+branding:
+  icon: "shield"
+  color: "blue"
 inputs:
   config:
     description: "Path to ragopt YAML config"
