@@ -6,6 +6,14 @@
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
+UI development:
+
+```bash
+cd ui
+npm install
+npm run dev
+```
+
 ## Development workflow
 
 1. Open an issue describing the bug/feature.

@@ -10,6 +10,29 @@ Teams building RAG apps ship prompt/model/retrieval changes quickly but lack a p
 - recommendation with constraints
 - regression verdict vs baseline
 
+## Non-technical explanation
+
+Think of this as a safety check for AI updates.
+
+Before a company changes how its AI assistant answers questions, this tool does a trial run and checks:
+
+- Are answers still good?
+- Are answers still based on source documents?
+- Is the response too slow?
+- Is the response too expensive?
+
+If the new setup is risky, the tool warns the team before customers see the change.
+
+## Everyday example (simple)
+
+A food delivery company has a help assistant in its app.
+
+- Team tries a new AI setup to make replies faster.
+- Replies become faster, but some answers are wrong.
+- `rag-optimize-ci` catches this in pull request checks.
+- Team does not ship the bad update.
+- Customers keep getting reliable help answers.
+
 ## Architecture
 
 - `ragopt/config.py`: config + dataset loading
@@ -18,6 +41,7 @@ Teams building RAG apps ship prompt/model/retrieval changes quickly but lack a p
 - `ragopt/engine.py`: run pipeline, recommendation, regression comparison
 - `ragopt/cli.py`: run/compare/recommend interfaces
 - `action.yml`: GitHub Action integration
+- `ui/`: React dashboard for visual review of run artifacts
 
 ## Core tradeoffs
 

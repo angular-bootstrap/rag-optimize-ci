@@ -1,0 +1,151 @@
+{
+  "run_id": "e6f720e2",
+  "generated_at": "2026-03-03T02:42:31.848026+00:00",
+  "dataset_path": "datasets/rag_qa_small.jsonl",
+  "policy": {
+    "min_quality": 0.05,
+    "max_latency_ms": 900.0,
+    "max_cost_per_query": 0.01,
+    "max_quality_drop": 0.05,
+    "weights": {
+      "quality": 0.45,
+      "groundedness": 0.25,
+      "citation": 0.15,
+      "latency": 0.1,
+      "cost": 0.05
+    }
+  },
+  "candidates": [
+    {
+      "name": "baseline-lite",
+      "provider": "mock",
+      "model": "mock-lite",
+      "aggregate": {
+        "quality": 0.3333333333333333,
+        "groundedness": 0.9074074074074073,
+        "citation": 1.0,
+        "latency_ms": 260.22941489861387,
+        "cost": 3.5333333333333336e-05,
+        "score": 0.4977608057520058,
+        "passed_hard_constraints": true
+      },
+      "cases": [
+        {
+          "record_id": "q1",
+          "answer": "Retrieval-augmented generation (RAG) combines retrieval and generation for grounded responses. [1]",
+          "selected_contexts": [
+            "Retrieval-augmented generation (RAG) combines retrieval and generation for grounded responses."
+          ],
+          "metrics": {
+            "quality": 0.5599999999999999,
+            "groundedness": 0.9166666666666666,
+            "citation": 1.0,
+            "latency_ms": 418.30093322448477,
+            "cost": 3.6e-05,
+            "score": 0.5845087851972796,
+            "passed_hard_constraints": true
+          }
+        },
+        {
+          "record_id": "q2",
+          "answer": "Citations let users map answer statements to evidence. [1]",
+          "selected_contexts": [
+            "Citations let users map answer statements to evidence."
+          ],
+          "metrics": {
+            "quality": 0.19999999999999998,
+            "groundedness": 0.8888888888888888,
+            "citation": 1.0,
+            "latency_ms": 175.83900760384273,
+            "cost": 3.2e-05,
+            "score": 0.44252455471068414,
+            "passed_hard_constraints": true
+          }
+        },
+        {
+          "record_id": "q3",
+          "answer": "Higher top-k can increase recall but may add irrelevant context. [1]",
+          "selected_contexts": [
+            "Higher top-k can increase recall but may add irrelevant context."
+          ],
+          "metrics": {
+            "quality": 0.24000000000000002,
+            "groundedness": 0.9166666666666666,
+            "citation": 1.0,
+            "latency_ms": 186.54830386751405,
+            "cost": 3.8e-05,
+            "score": 0.46624907734805393,
+            "passed_hard_constraints": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "candidate-detailed",
+      "provider": "mock",
+      "model": "mock-pro",
+      "aggregate": {
+        "quality": 0.28072843126606567,
+        "groundedness": 0.6842592592592592,
+        "citation": 1.0,
+        "latency_ms": 178.6615969894285,
+        "cost": 0.00010933333333333334,
+        "score": 0.42699465366349676,
+        "passed_hard_constraints": true
+      },
+      "cases": [
+        {
+          "record_id": "q1",
+          "answer": "Retrieval-augmented generation (RAG) combines retrieval and generation for grounded responses. Therefore: What is retrieval-augmented generation? [1]",
+          "selected_contexts": [
+            "Retrieval-augmented generation (RAG) combines retrieval and generation for grounded responses.",
+            "It reduces hallucination by using external documents."
+          ],
+          "metrics": {
+            "quality": 0.45161290322580644,
+            "groundedness": 0.7777777777777778,
+            "citation": 1.0,
+            "latency_ms": 135.52960647316144,
+            "cost": 0.000106,
+            "score": 0.5320814057323727,
+            "passed_hard_constraints": true
+          }
+        },
+        {
+          "record_id": "q2",
+          "answer": "Citations let users map answer statements to evidence. Therefore: Why use citations in RAG answers? [1]",
+          "selected_contexts": [
+            "Citations let users map answer statements to evidence.",
+            "Verified answers improve trust and auditability."
+          ],
+          "metrics": {
+            "quality": 0.14814814814814814,
+            "groundedness": 0.625,
+            "citation": 1.0,
+            "latency_ms": 214.45009484891935,
+            "cost": 0.00010400000000000001,
+            "score": 0.34856887835012007,
+            "passed_hard_constraints": true
+          }
+        },
+        {
+          "record_id": "q3",
+          "answer": "Higher top-k can increase recall but may add irrelevant context. Therefore: What tradeoff does top-k retrieval control? [1]",
+          "selected_contexts": [
+            "Higher top-k can increase recall but may add irrelevant context.",
+            "More context can increase cost and latency."
+          ],
+          "metrics": {
+            "quality": 0.24242424242424246,
+            "groundedness": 0.65,
+            "citation": 1.0,
+            "latency_ms": 186.00508964620462,
+            "cost": 0.000118,
+            "score": 0.40033367690799754,
+            "passed_hard_constraints": true
+          }
+        }
+      ]
+    }
+  ]
+}

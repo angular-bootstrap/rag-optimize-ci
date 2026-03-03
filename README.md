@@ -4,6 +4,34 @@
 
 It evaluates candidate RAG configurations, scores quality + groundedness + citation + latency + cost, recommends the best candidate, and can fail CI when constraints or regression policies are breached.
 
+## Explain it simply
+
+If you need to explain this project in plain language:
+
+`rag-optimize-ci` is a quality gate for AI apps that use RAG.  
+Before a team merges a change (new prompt/model/retriever settings), this tool tests options on benchmark questions and answers:
+
+- Which option gives better answer quality?
+- Is it still grounded in source docs?
+- Is it too slow?
+- Is it too expensive?
+
+Then it recommends the best option and can block risky changes in PRs.
+
+### Simple example
+
+A startup has a support chatbot and tries a new model to improve answers.
+
+- New model is faster, but answer quality drops.
+- `rag-optimize-ci` catches the drop in CI.
+- PR gets a scorecard comment.
+- Team keeps the safer config instead of shipping a regression.
+
+### 30-second interview pitch
+
+\"I built a CI-first tool for RAG apps that prevents bad AI releases.  
+It runs benchmark Q&A tests across candidate configs, scores quality, groundedness, latency, and cost, then recommends the best config and blocks regressions in pull requests.\"
+
 ## Why this project
 
 Most eval tools are broad. This project is intentionally opinionated:
@@ -114,6 +142,18 @@ jobs:
 - `ragopt run --config <path> [--report <path>] [--github-pr-comment]`
 - `ragopt recommend --run <run_json>`
 - `ragopt compare --baseline <run_json> --candidate <run_json> --baseline-name <name> --candidate-name <name> [--fail-on-breach]`
+
+## TypeScript UI
+
+A React + TypeScript dashboard is included in [`ui/`](ui).
+
+```bash
+cd ui
+npm install
+npm run dev
+```
+
+Upload any `artifacts/run_*.json` or load the bundled sample.
 
 ## Development
 
