@@ -1,0 +1,15 @@
+name: rag-gate
+
+on:
+  pull_request:
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: yourname/rag-optimize-ci@v1
+        with:
+          config: ragopt.yaml
+          report_path: artifacts/report.md
+          post_pr_comment: true

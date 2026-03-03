@@ -37,6 +37,24 @@ python3 -m ragopt.cli compare \
   --fail-on-breach
 ```
 
+## Demo PR report
+
+Real generated report from this project:
+- [`examples/demo_pr_comment.md`](examples/demo_pr_comment.md)
+
+You can attach a screenshot of this markdown rendered in your PR as `docs/pr-demo.png` and link it in the README after your first public run.
+
+## Consumer repo validation
+
+Validated from a separate repo directory (`/tmp/ragopt-consumer`) with independent config/dataset using source import:
+
+```bash
+cd /tmp/ragopt-consumer
+PYTHONPATH=/path/to/rag-optimize-ci python3 -m ragopt.cli run --config ragopt.yaml --report artifacts/report.md
+```
+
+This produced `artifacts/run_*.json` and `artifacts/report.md` successfully.
+
 ## Config parsing and validation
 
 - Offline mode (default): parses JSON syntax in `.yaml` file (JSON is valid YAML).
@@ -50,7 +68,9 @@ With full mode installed:
 - true YAML parsing via `PyYAML`
 - strict schema validation/defaults via `pydantic`
 
-See: [`examples/ragopt.yaml`](examples/ragopt.yaml)
+See:
+- [`examples/ragopt.yaml`](examples/ragopt.yaml)
+- [`examples/ragopt.true.yaml`](examples/ragopt.true.yaml)
 
 ## Provider support
 
